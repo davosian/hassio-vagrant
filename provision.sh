@@ -71,7 +71,7 @@ install_docker() {
     apt-get update
     apt-get install -y docker-ce
 
-    usermod -aG docker ubuntu
+    usermod -aG docker vagrant
 }
 
 # ------------------------------------------------------------------------------
@@ -139,8 +139,8 @@ show_post_up_message() {
     local ip_public
     local ip_private
     
-    ip_public=$(ip -f inet -o addr show enp0s8 | cut -d\  -f 7 | cut -d/ -f 1)
-    ip_private=$(ip -f inet -o addr show enp0s9 | cut -d\  -f 7 | cut -d/ -f 1)
+    ip_public=$(ip -f inet -o addr show eth0 | cut -d\  -f 7 | cut -d/ -f 1)
+    ip_private=$(ip -f inet -o addr show eth1 | cut -d\  -f 7 | cut -d/ -f 1)
 
     echo '====================================================================='
     echo ' Community Hass.io Add-ons: Vagrant'
